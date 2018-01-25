@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4409.robot.subsystems;
 
+import org.usfirst.frc.team4409.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,7 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Claw extends Subsystem {
 	
-	DoubleSolenoid claw = new DoubleSolenoid(0, 1);
+	DoubleSolenoid claw = RobotMap.claw;
+	
 	boolean open = false;
 
     // Put methods for controlling this subsystem

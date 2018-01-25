@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team4409.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Jaguar;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -17,4 +21,14 @@ public class RobotMap {
 	public static final int
 		Drive_Left = 1,
 		Drive_Right = 2;
+	
+	public static DoubleSolenoid claw = new DoubleSolenoid(0,1);
+	
+	public static Jaguar elevatorLeft = new Jaguar(3);
+	public static Jaguar elevatorRight = new Jaguar(4);
+	
+	public static DigitalInput topLeft = new DigitalInput(0);
+	public static DigitalInput bottomLeft = new DigitalInput(1);
+	public static DigitalInput bottomRight = new DigitalInput(2);
+	public static DigitalInput topRight = new DigitalInput(3);
 }

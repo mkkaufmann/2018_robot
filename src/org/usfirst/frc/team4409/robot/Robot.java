@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
 import org.usfirst.frc.team4409.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4409.robot.subsystems.Elevator;
 import org.usfirst.frc.team4409.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain DriveTrain = new DriveTrain();
 	public static final Claw claw = new Claw();
+	public static final Elevator lift = new Elevator();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;

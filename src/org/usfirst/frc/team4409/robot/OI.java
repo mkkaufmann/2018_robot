@@ -24,14 +24,8 @@ public class OI {
 	Button trigger = new JoystickButton(Driver, 1);
 	
 	public OI() {
-		if (Robot.claw.getOpen() == true) {
-			trigger.whenPressed(new CloseClaw());
-			
-		}
-		else if (Robot.claw.getOpen() == false) {
-			trigger.whenPressed(new OpenClaw());
-			
-		}
+		trigger.whenPressed(new CloseClaw());
+		trigger.whenReleased(new OpenClaw());
 		
 	}
 	

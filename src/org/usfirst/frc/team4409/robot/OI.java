@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team4409.robot;
 
+import org.usfirst.frc.team4409.robot.commands.CloseClaw;
+import org.usfirst.frc.team4409.robot.commands.OpenClaw;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -18,8 +21,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick Driver = new Joystick(0);
+	Button trigger = new JoystickButton(Driver, 1);
 	
 	public OI() {
+		if (Robot.claw.getOpen() == true) {
+			trigger.whenPressed(new CloseClaw());
+			
+		}
+		else if (Robot.claw.getOpen() == false) {
+			trigger.whenPressed(new OpenClaw());
+			
+		}
 		
 	}
 	

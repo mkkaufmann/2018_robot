@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4409.robot;
 
 import org.usfirst.frc.team4409.robot.commands.CloseClaw;
+import org.usfirst.frc.team4409.robot.commands.LowerLift;
 import org.usfirst.frc.team4409.robot.commands.OpenClaw;
 import org.usfirst.frc.team4409.robot.commands.RaiseLift;
 import org.usfirst.frc.team4409.robot.commands.StopLift;
@@ -25,12 +26,17 @@ public class OI {
 	Joystick Driver = new Joystick(0);
 	Button trigger = new JoystickButton(Driver, 1);
 	Button liftUp = new JoystickButton(Driver, 3);
+	Button liftDown = new JoystickButton(Driver, 2);
 	
 	public OI() {
 		trigger.whenPressed(new CloseClaw());
 		trigger.whenReleased(new OpenClaw());
+		
 		liftUp.whenPressed(new RaiseLift());
 		liftUp.whenReleased(new StopLift());
+		
+		liftDown.whenPressed(new LowerLift());
+		liftDown.whenReleased(new StopLift());
 		
 	}
 	

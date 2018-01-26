@@ -28,7 +28,11 @@ public class Elevator extends Subsystem {
     public void lowerLeft() {
     	left.set(-0.5);
     }
-
+    
+    public void raise(){
+    	left.set(.5);
+    	right.set(-.5);
+    }
     public void raiseRight() {
     	right.set(-0.5);
     }
@@ -43,6 +47,11 @@ public class Elevator extends Subsystem {
     
     public void stopLeft() {
     	left.set(0);
+    }
+    
+    public void stop(){
+    	left.set(0);
+    	right.set(0);
     }
 }
 

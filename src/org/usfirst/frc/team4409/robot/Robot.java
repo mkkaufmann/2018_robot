@@ -128,6 +128,21 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		angle = gyro.getAngle();
 		SmartDashboard.putNumber("/Smartdashboard/Gyro",6);
+		
+		if (RobotMap.topRight.get() == false){//False = true?
+			lift.stop();
+		}
+	    if (RobotMap.topLeft.get() == false){
+			lift.stop();
+		}
+	    if (RobotMap.bottomRight.get() == false){
+	    	lift.stop();
+	    }
+	    if (RobotMap.bottomLeft.get() == false){
+	    	lift.stop();
+	    }
+	    
+		
 	}
 
 	/**

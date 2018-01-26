@@ -2,6 +2,7 @@ package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.OI;
 import org.usfirst.frc.team4409.robot.Robot;
+import org.usfirst.frc.team4409.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,7 +24,17 @@ public class RaiseLift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.raise();
+    	if (RobotMap.liftEnc.getDistance() * RobotMap.EncScale > RobotMap.LiftTop){//Past encoder limit
+    		Robot.lift.stopLeft();
+        	Robot.lift.stopRight();
+    	}
+    	else if (!RobotMap.topLeft.get() || !RobotMap.topRight.get()){//Triggered hall effect sensors
+    		Robot.lift.stopLeft();
+        	Robot.lift.stopRight();
+    	}
+    	else{
+        	Robot.lift.raise();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

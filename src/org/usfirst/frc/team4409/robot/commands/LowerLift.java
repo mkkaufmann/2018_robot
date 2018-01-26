@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.Robot;
+import org.usfirst.frc.team4409.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,8 +22,18 @@ public class LowerLift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.lowerLeft();
-    	Robot.lift.lowerRight();
+	    if(RobotMap.liftEnc.get() * RobotMap.EncScale < RobotMap.LiftBottom){
+	    	Robot.lift.stopLeft();
+        	Robot.lift.stopRight();
+	    }
+	    else if(!RobotMap.bottomLeft.get() || !RobotMap.bottomRight.get()){
+	    	Robot.lift.stopLeft();
+        	Robot.lift.stopRight();
+	    }
+	    else{
+	    	Robot.lift.lowerLeft();
+	    	Robot.lift.lowerRight();
+	    }
     }
 
     // Make this return true when this Command no longer needs to run execute()

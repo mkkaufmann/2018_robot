@@ -9,6 +9,7 @@ package org.usfirst.frc.team4409.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
 
 /**
@@ -31,4 +32,11 @@ public class RobotMap {
 	public static DigitalInput bottomLeft = new DigitalInput(1);
 	public static DigitalInput bottomRight = new DigitalInput(2);
 	public static DigitalInput topRight = new DigitalInput(3);
+	
+	public static Encoder liftEnc = new Encoder(4,5);
+	
+	public static double LiftTop = 350;//encoder variables
+	public static double LiftBottom = -350;
+	public static double EncScale = 0.17578125;
+
 }

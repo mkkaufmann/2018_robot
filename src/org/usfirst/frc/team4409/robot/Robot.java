@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static final Claw claw = new Claw();
 	public static final Elevator lift = new Elevator();
 	public static OI m_oi;
-
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	ADXRS450_Gyro gyro;
@@ -128,19 +128,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		angle = gyro.getAngle();
 		SmartDashboard.putNumber("/Smartdashboard/Gyro",6);
-		
-		if (RobotMap.topRight.get() == false){//False = true?
-			lift.stop();
-		}
-	    if (RobotMap.topLeft.get() == false){
-			lift.stop();
-		}
-	    if (RobotMap.bottomRight.get() == false){
-	    	lift.stop();
-	    }
-	    if (RobotMap.bottomLeft.get() == false){
-	    	lift.stop();
-	    }
+	    
 	    
 		
 	}

@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4409.robot;
 
 import edu.wpi.first.wpilibj.ADXL345_SPI;
+//import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -56,6 +57,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		
 		gyro = new ADXRS450_Gyro();
+		RobotMap.liftEnc.reset();//Set encoder to 0
 	}
 
 	/**

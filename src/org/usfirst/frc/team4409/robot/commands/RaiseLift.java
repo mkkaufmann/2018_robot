@@ -24,7 +24,7 @@ public class RaiseLift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.liftEnc.getDistance() * RobotMap.EncScale > RobotMap.LiftTop){//Past encoder limit
+    	if (RobotMap.liftEnc.getDistance() * RobotMap.EncScale < RobotMap.LiftTop){//Past encoder limit
     		Robot.lift.stopLeft();
         	Robot.lift.stopRight();
     	}

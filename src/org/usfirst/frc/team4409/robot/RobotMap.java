@@ -35,8 +35,8 @@ public class RobotMap {
 	
 	public static Encoder liftEnc = new Encoder(4,5);
 	
-	public static double LiftTop = 350;//encoder variables
-	public static double LiftBottom = -350;
+	public static double LiftTop = -35000000;//encoder variables
+	public static double LiftBottom = 3500000;
 	public static double EncScale = 0.17578125;
 
 }

@@ -22,7 +22,7 @@ public class LowerLift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	    if(RobotMap.liftEnc.get() * RobotMap.EncScale < RobotMap.LiftBottom){
+	    if(RobotMap.liftEnc.get() * RobotMap.EncScale > RobotMap.LiftBottom){
 	    	Robot.lift.stopLeft();
         	Robot.lift.stopRight();
 	    }

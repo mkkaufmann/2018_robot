@@ -28,9 +28,11 @@ public class RaiseLift extends Command {
     		Robot.lift.stopLeft();
         	Robot.lift.stopRight();
     	}
-    	else if (!RobotMap.topLeft.get() || !RobotMap.topRight.get()){//Triggered hall effect sensors
+    	else if (!RobotMap.topLeft.get()){//Triggered hall effect sensors
     		Robot.lift.stopLeft();
-        	Robot.lift.stopRight();
+    	}
+    	else if (!RobotMap.topRight.get()) {
+    		Robot.lift.stopRight();
     	}
     	else{
         	Robot.lift.raise();

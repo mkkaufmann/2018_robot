@@ -1,42 +1,31 @@
 package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.Robot;
-import org.usfirst.frc.team4409.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LowerLift extends Command {
+public class KillSwitch extends Command {
 
-    public LowerLift() {
+    public KillSwitch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.claw.open();
+    	Robot.DriveTrain.stop();
+    	Robot.lift.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	    if(RobotMap.liftEnc.get() * RobotMap.EncScale < RobotMap.LiftBottom){
-	    	Robot.lift.stopLeft();
-        	Robot.lift.stopRight();
-	    }
-	    else if(!RobotMap.bottomLeft.get()){
-	    	Robot.lift.stopLeft();
-        	
-	    }
-	    else if(!RobotMap.bottomRight.get()) {
-	    	Robot.lift.stopRight();
-	    }
-	    else{
-	    	Robot.lift.lowerLeft();
-	    	Robot.lift.lowerRight();
-	    }
+    	Robot.claw.open();
+    	Robot.DriveTrain.stop();
+    	Robot.lift.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()

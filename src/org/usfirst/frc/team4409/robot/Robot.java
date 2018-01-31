@@ -8,11 +8,9 @@
 package org.usfirst.frc.team4409.robot;
 
 import edu.wpi.first.wpilibj.ADXL345_SPI;
-//import com.analog.adis16448.frc.ADIS16448_IMU;
+import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -37,10 +35,10 @@ public class Robot extends IterativeRobot {
 	public static final Claw claw = new Claw();
 	public static final Elevator lift = new Elevator();
 	public static OI m_oi;
+	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-	ADXRS450_Gyro gyro;
 	double angle;
 
 	/**
@@ -56,7 +54,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Smartdashboard/example_variable", true);
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		
-		gyro = new ADXRS450_Gyro();
+		//gyro = new ADXRS450_Gyro();
 		RobotMap.liftEnc.reset();//Set encoder to 0
 	}
 
@@ -128,9 +126,23 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		angle = gyro.getAngle();
 		SmartDashboard.putNumber("/Smartdashboard/Gyro",6);
+		
+	    //sensor test code
+	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
 	    
+	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+	    
+	    SmartDashboard.putNumber("Pitch", imu.getPitch());
+	    SmartDashboard.putNumber("Roll", imu.getRoll());
+	    SmartDashboard.putNumber("Yaw", imu.getYaw());
+	    
+	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
 	    
 		
 	}

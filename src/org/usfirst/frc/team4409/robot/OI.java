@@ -28,7 +28,7 @@ public class OI {
 	Button trigger = new JoystickButton(Driver, 1);
 	Button liftUp = new JoystickButton(Driver, 3);
 	Button liftDown = new JoystickButton(Driver, 2);
-	Button kill = new JoystickButton(Driver, 8);
+	//Button kill = new JoystickButton(Driver, 8);
 	
 	public OI() {
 		trigger.whenPressed(new CloseClaw());
@@ -40,8 +40,8 @@ public class OI {
 		liftDown.whenPressed(new LowerLift());
 		liftDown.whenReleased(new StopLift());
 		
-		kill.whenPressed(new KillSwitch());
-		kill.whenReleased(null);
+		//kill.whenPressed(new KillSwitch());
+		//kill.whenReleased(null);
 		
 	}
 	

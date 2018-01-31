@@ -16,9 +16,11 @@ public class KillSwitch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	/*
     	Robot.claw.open();
     	Robot.DriveTrain.stop();
     	Robot.lift.stop();
+    	*/
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -19,14 +22,17 @@ import edu.wpi.first.wpilibj.Jaguar;
  * floating around.
  */
 public class RobotMap {
-	public static final int
-		Drive_Left = 1,
-		Drive_Right = 2;
+	//drive motors
+	public static Spark frontLeft = new Spark(0);
+	public static Spark backLeft = new Spark(1);
+	public static SpeedControllerGroup Drive_Left = new SpeedControllerGroup(frontLeft,backLeft);
+	public static Spark frontRight = new Spark(2);
+	public static Spark backRight = new Spark(3);
+	public static SpeedControllerGroup Drive_Right = new SpeedControllerGroup(frontLeft,backLeft);
 	
 	public static DoubleSolenoid claw = new DoubleSolenoid(0,1);
-	
-	public static Jaguar elevatorLeft = new Jaguar(3);
-	public static Jaguar elevatorRight = new Jaguar(4);
+	public static Talon elevatorLeft = new Talon(4);
+	public static Talon elevatorRight = new Talon(5);
 	
 	public static DigitalInput topLeft = new DigitalInput(0);
 	public static DigitalInput bottomLeft = new DigitalInput(1);

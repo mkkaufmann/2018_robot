@@ -3,6 +3,7 @@ package org.usfirst.frc.team4409.robot.subsystems;
 import org.usfirst.frc.team4409.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Elevator extends Subsystem {
 	
-	Jaguar left = RobotMap.elevatorLeft;
-	Jaguar right = RobotMap.elevatorRight;
+	Talon left = RobotMap.elevatorLeft;
+	Talon right = RobotMap.elevatorRight;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

@@ -26,11 +26,11 @@ public class LowerLift extends Command {
 	    	Robot.lift.stopLeft();
         	Robot.lift.stopRight();
 	    }
-	    else if(!RobotMap.bottomLeft.get()){
+	    else if(!RobotMap.bottomLeftSwitch.get()){
 	    	Robot.lift.stopLeft();
         	
 	    }
-	    else if(!RobotMap.bottomRight.get()) {
+	    else if(!RobotMap.bottomRightSwitch.get()) {
 	    	Robot.lift.stopRight();
 	    }
 	    else{

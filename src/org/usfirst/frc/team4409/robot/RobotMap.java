@@ -34,10 +34,10 @@ public class RobotMap {
 	public static Talon elevatorLeft = new Talon(4);
 	public static Talon elevatorRight = new Talon(5);
 	
-	public static DigitalInput topLeft = new DigitalInput(0);
-	public static DigitalInput bottomLeft = new DigitalInput(1);
-	public static DigitalInput bottomRight = new DigitalInput(2);
-	public static DigitalInput topRight = new DigitalInput(3);
+	public static DigitalInput topLeftSwitch = new DigitalInput(0);
+	public static DigitalInput bottomLeftSwitch = new DigitalInput(1);
+	public static DigitalInput bottomRightSwitch = new DigitalInput(2);
+	public static DigitalInput topRightSwitch = new DigitalInput(3);
 	
 	public static Encoder liftEnc = new Encoder(4,5);
 	

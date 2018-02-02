@@ -126,7 +126,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("/Smartdashboard/Gyro",6);
+		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);
 		
 	    //sensor test code
 	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
@@ -143,6 +143,7 @@ public class Robot extends IterativeRobot {
 	    
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
+	    SmartDashboard.putBoolean("/SmartDashboard/example_variable",RobotMap.topLeftSwitch.get());
 	    
 		
 	}

@@ -125,6 +125,32 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
+		/*
+		 * Lift smoothly 
+		 * 
+		 * x:encoder value as presented
+		 * t:max encoder value
+		 * b:min encoder value
+		 * 
+		 * SOLUTION 1:
+		 * 
+		 * f(x) = -(x-b)(x-t)
+		 * 
+		 * max: f((b+t)/2)
+		 * 
+		 * return(multiply f(x) by 1/max)
+		 * 
+		 * SOLUTION 2:
+		 * 
+		 * return sin((-pi/(b-t))x-b)
+		 * 
+		 * SOLUTION 3: 
+		 * 
+		 * WRITE PIECEWISE FUNCTION HERE
+		 * (pic in pictures directory of the LABVIEW pc)
+		 * 
+		 */
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);
 		
@@ -143,7 +169,7 @@ public class Robot extends IterativeRobot {
 	    
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
-	    SmartDashboard.putBoolean("/SmartDashboard/example_variable",RobotMap.topLeftSwitch.get());
+	    SmartDashboard.putBoolean("SmartDashboard/example_variable",RobotMap.topLeftSwitch.get());
 	    
 		
 	}

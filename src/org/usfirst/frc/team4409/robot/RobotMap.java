@@ -23,16 +23,20 @@ import edu.wpi.first.wpilibj.Talon;
  */
 public class RobotMap {
 	//drive motors
-	public static Spark frontLeft = new Spark(0);
-	public static Spark backLeft = new Spark(1);
-	public static SpeedControllerGroup Drive_Left = new SpeedControllerGroup(frontLeft,backLeft);
-	public static Spark frontRight = new Spark(2);
-	public static Spark backRight = new Spark(3);
-	public static SpeedControllerGroup Drive_Right = new SpeedControllerGroup(frontLeft,backLeft);
+	public static Spark frontLeft = new Spark(4);
+	public static Spark backLeft = new Spark(5);
+	//public static SpeedControllerGroup Drive_Left = new SpeedControllerGroup(frontLeft,backLeft);
+	public static Spark frontRight = new Spark(1);
+	public static Spark backRight = new Spark(2);
+	//public static SpeedControllerGroup Drive_Right = new SpeedControllerGroup(frontLeft,backLeft);
+	
+	//drive encoders
+	public static Encoder driveRightEnc = new Encoder(6,7);
+	public static Encoder driveLeftEnc = new Encoder(8,9);
 	
 	public static DoubleSolenoid claw = new DoubleSolenoid(0,1);
-	public static Talon elevatorLeft = new Talon(4);
-	public static Talon elevatorRight = new Talon(5);
+	public static Talon elevatorLeft = new Talon(3);
+	public static Talon elevatorRight = new Talon(0);
 	
 	public static DigitalInput topLeftSwitch = new DigitalInput(0);
 	public static DigitalInput bottomLeftSwitch = new DigitalInput(1);

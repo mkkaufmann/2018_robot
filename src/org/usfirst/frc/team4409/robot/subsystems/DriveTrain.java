@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrain extends Subsystem {
 
-   private RobotDrive MainDrive = new RobotDrive(RobotMap.Drive_Left, RobotMap.Drive_Right);
+   private RobotDrive MainDrive = new RobotDrive(RobotMap.frontLeft, RobotMap.backLeft,RobotMap.frontRight,RobotMap.backRight);
 
    @Override
    protected void initDefaultCommand() {
@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
    }
    
    public void TeleopDrive(Joystick Driver) {
-	   MainDrive.arcadeDrive(Driver.getY(),-Driver.getX());
+	   MainDrive.arcadeDrive(-Driver.getY(),-Driver.getX());
    }
    
    public void stop() {

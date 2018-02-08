@@ -22,6 +22,19 @@ public class Elevator extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    public void setBoth(double amount){
+    	setLeft(amount);
+    	setRight(amount);
+    }
+    
+    public void setLeft(double amount){
+    	left.set(amount);
+    }
+    
+    public void setRight(double amount){
+    	right.set(amount);
+    }
+    
     public void raiseLeft() {
     	left.set(0.5);
     }

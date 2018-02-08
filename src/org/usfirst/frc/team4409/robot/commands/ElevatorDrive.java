@@ -7,22 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StopLeftLift extends Command {
+public class ElevatorDrive extends Command {
 
-    public StopLeftLift() {
+	public ElevatorDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift);
+    	requires(org.usfirst.frc.team4409.robot.Robot.ELEVATOR_DRIVE);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.lift.stopLeft();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	org.usfirst.frc.team4409.robot.Robot.ELEVATOR_DRIVE.TeleopDrive(org.usfirst.frc.team4409.robot.Robot.m_oi.getSecondJoystick());
     }
 
     // Make this return true when this Command no longer needs to run execute()

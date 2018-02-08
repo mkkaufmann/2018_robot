@@ -9,13 +9,13 @@ package org.usfirst.frc.team4409.robot;
 
 //import edu.wpi.first.wpilibj.ADXL345_SPI;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4409.robot.autonomous.Baseline;
 //import org.usfirst.frc.team4409.robot.commands.ElevatorDrive;
 import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static OI m_oi;
 	public static final Elevator ELEVATOR_DRIVE = new Elevator();
 	//public static final ADIS16448_IMU imu = new ADIS16448_IMU();
-	
+	Baseline base;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	double angle;
@@ -95,6 +95,7 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
+		base = new Baseline();
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -108,6 +109,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		base.Run();
 	}
 
 	@Override

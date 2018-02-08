@@ -7,8 +7,8 @@
 
 package org.usfirst.frc.team4409.robot;
 
-import edu.wpi.first.wpilibj.ADXL345_SPI;
-import com.analog.adis16448.frc.ADIS16448_IMU;
+//import edu.wpi.first.wpilibj.ADXL345_SPI;
+//import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4409.robot.autonomous.Autonomous;
+//import org.usfirst.frc.team4409.robot.commands.ElevatorDrive;
 import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
 import org.usfirst.frc.team4409.robot.subsystems.DriveTrain;
@@ -35,9 +36,10 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain DriveTrain = new DriveTrain();
 	public static final Claw claw = new Claw();
-	public static final Elevator lift = new Elevator();
 	public static OI m_oi;
-	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	public static final Elevator ELEVATOR_DRIVE = new Elevator();
+	//public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	double angle;
@@ -154,22 +156,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);
 		
-	    //sensor test code
-	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
-	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
-	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
-	    
-	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
-	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
-	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
-	    
-	    SmartDashboard.putNumber("Pitch", imu.getPitch());
-	    SmartDashboard.putNumber("Roll", imu.getRoll());
-	    SmartDashboard.putNumber("Yaw", imu.getYaw());
-	    
-	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
-	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
-	    SmartDashboard.putBoolean("SmartDashboard/example_variable",RobotMap.topLeftSwitch.get());
 	    
 		
 	}

@@ -1,8 +1,11 @@
 package org.usfirst.frc.team4409.robot.subsystems;
 
 import org.usfirst.frc.team4409.robot.RobotMap;
+import org.usfirst.frc.team4409.robot.commands.ArcadeDrive;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,61 +14,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Elevator extends Subsystem {
 	
-	Talon left = RobotMap.elevatorLeft;
-	Talon right = RobotMap.elevatorRight;
+	private RobotDrive ElevatorDrive = new RobotDrive(RobotMap.elevatorLeft,RobotMap.elevatorRight);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void initDefaultCommand() {
+    protected void initDefaultCommand() {
+    	setDefaultCommand(new org.usfirst.frc.team4409.robot.commands.ElevatorDrive());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void setBoth(double amount){
-    	setLeft(amount);
-    	setRight(amount);
+    public void TeleopDrive(Joystick Driver) {
+    	ElevatorDrive.arcadeDrive(Driver.getY(),-Driver.getX());
+    	
     }
     
-    public void setLeft(double amount){
-    	left.set(amount);
+    public void stop() {
+ 	   ElevatorDrive.drive(0, 0);
     }
     
-    public void setRight(double amount){
-    	right.set(amount);
+    public void setSpeed(double speed, double turning) {
+ 	   ElevatorDrive.arcadeDrive(speed, turning);
     }
     
-    public void raiseLeft() {
-    	left.set(0.5);
-    }
-    
-    public void lowerLeft() {
-    	left.set(-0.5);
-    }
-    
-    public void raise(){
-    	left.set(.5);
-    	right.set(-.5);
-    }
-    public void raiseRight() {
-    	right.set(-0.5);
-    }
-
-    public void lowerRight() {
-    	right.set(0.5);
-    }
-    
-    public void stopRight() {
-    	right.set(0);
-    }
-    
-    public void stopLeft() {
-    	left.set(0);
-    }
-    
-    public void stop(){
-    	left.set(0);
-    	right.set(0);
-    }
 }
 

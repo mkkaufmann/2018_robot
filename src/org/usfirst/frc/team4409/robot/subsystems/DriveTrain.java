@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrain extends Subsystem {
 
-   private RobotDrive MainDrive = new RobotDrive(RobotMap.frontLeft, RobotMap.backLeft,RobotMap.frontRight,RobotMap.backRight);
+   private RobotDrive MainDrive = new RobotDrive(RobotMap.frontLeft,RobotMap.backLeft,RobotMap.frontRight,RobotMap.backRight);
 
    @Override
    protected void initDefaultCommand() {
@@ -31,6 +31,10 @@ public class DriveTrain extends Subsystem {
    
    public void stop() {
 	   MainDrive.drive(0, 0);
+   }
+   
+   public void setSpeed(double speed, double turning) {
+	   MainDrive.arcadeDrive(speed, turning);
    }
 
 

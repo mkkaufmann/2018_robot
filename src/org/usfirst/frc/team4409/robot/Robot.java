@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4409.robot.autonomous.Autonomous;
 import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
 import org.usfirst.frc.team4409.robot.subsystems.DriveTrain;
@@ -36,7 +38,6 @@ public class Robot extends IterativeRobot {
 	public static final Elevator lift = new Elevator();
 	public static OI m_oi;
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
-	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	double angle;
@@ -87,14 +88,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
-
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();

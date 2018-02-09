@@ -24,19 +24,32 @@ public class DriveCommand extends AutonomousCommand{
 	public boolean Run(){
 		double left = 0;
 		double right = 0;
-		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal){
-			left = 0.5;
+		if(leftEncGoal>0) {
+			if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal){
+				left = 0.25;
+			}
+		}else {
+			if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)>leftEncGoal){
+				left = -0.25;
+			}
 		}
-		if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
-			right = 0.5;
+		if(rightEncGoal>0) {
+			if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
+				right = 0.2;
+			}
+		}else {
+			if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)>rightEncGoal){
+				right = -0.2;
+			}
 		}
+		
 		if(left == 0 && right == 0){
 			return true;
 		}else{
 			frontLeft.set(left);
 			backLeft.set(left);
-			frontRight.set(right);
-			backRight.set(right);
+			frontRight.set(-right);
+			backRight.set(-right);
 			return false;
 		}
 	}

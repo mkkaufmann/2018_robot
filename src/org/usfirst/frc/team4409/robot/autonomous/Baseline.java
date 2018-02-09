@@ -6,6 +6,9 @@ public class Baseline extends Autonomous{
 	
 	public Baseline() {
 		super();
-		commands.add(new DriveCommand(360,360)); 
+		commands.add(new DriveCommand(710,710)); 
+		commands.add(new LiftCommand(360));
 	}
+	
+	
 }

@@ -2,6 +2,8 @@ package org.usfirst.frc.team4409.robot.autonomous;
 
 import java.util.ArrayList;
 
+import org.usfirst.frc.team4409.robot.Robot;
+import org.usfirst.frc.team4409.robot.RobotMap;
 import org.usfirst.frc.team4409.robot.autonomous.commands.AutonomousCommand;
 
 public class Autonomous {
@@ -15,6 +17,9 @@ public class Autonomous {
 		if(commands.size()-i > 0){
 			if(commands.get(i).Run()){
 				i++;
+				RobotMap.driveLeftEnc.reset();
+				RobotMap.driveRightEnc.reset();
+				RobotMap.liftEnc.reset();
 			}
 		}
 	}

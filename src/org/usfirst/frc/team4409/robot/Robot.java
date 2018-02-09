@@ -95,6 +95,8 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
+		RobotMap.driveLeftEnc.reset();
+		RobotMap.driveRightEnc.reset();
 		base = new Baseline();
 		
 		// schedule the autonomous command (example)

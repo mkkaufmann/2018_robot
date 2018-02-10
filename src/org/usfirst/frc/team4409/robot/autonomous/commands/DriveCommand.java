@@ -15,22 +15,26 @@ public class DriveCommand extends AutonomousCommand{
 	
 	private double leftEncGoal;
 	private double rightEncGoal;
+	private double drivePower;
 	
-	public DriveCommand(double _left, double _right){
+	public DriveCommand(double _left, double _right, double _power){
 		leftEncGoal = _left;
 		rightEncGoal = _right;
+		drivePower = _power;
 	}
 	@Override
 	public boolean Run(){
 		double left = 0;
 		double right = 0;
 		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal){
-			left = 0.5;
+			left = drivePower;
 		}
 		if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
-			right = 0.5;
+			right = -drivePower;
 		}
 		if(left == 0 && right == 0){
+			driveLeftEnc.reset();
+			driveRightEnc.reset();
 			return true;
 		}else{
 			frontLeft.set(left);

@@ -110,6 +110,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		base.Run();
+		UpdateDash();
 	}
 
 	@Override
@@ -157,8 +158,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);
 		
-	    
-		
+		UpdateDash();
 	}
 
 	/**
@@ -166,5 +166,16 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	
+	public void UpdateDash(){
+		//put sensor values to the dashboard for debuging
+		SmartDashboard.putNumber("Right drive encoder",RobotMap.driveRightEnc.getDistance());
+		SmartDashboard.putNumber("Left drive encoder", RobotMap.driveLeftEnc.getDistance());
+		SmartDashboard.putNumber("Lift encoder", RobotMap.liftEnc.getDistance());
+		SmartDashboard.putBoolean("Lift magnet sensor top left", RobotMap.topLeftSwitch.get());
+		SmartDashboard.putBoolean("Lift magnet sensor top right", RobotMap.topRightSwitch.get());
+		SmartDashboard.putBoolean("Lift magnet sensor bottom left", RobotMap.bottomLeftSwitch.get());
+		SmartDashboard.putBoolean("Lift magnet sensor bottom right", RobotMap.bottomRightSwitch.get());
 	}
 }

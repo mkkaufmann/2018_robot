@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4409.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 //import edu.wpi.first.wpilibj.ADXL345_SPI;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -58,6 +59,8 @@ public class Robot extends IterativeRobot {
 		
 		//gyro = new ADXRS450_Gyro();
 		RobotMap.liftEnc.reset();//Set encoder to 0
+		
+		CameraServer.getInstance().startAutomaticCapture();//hope camera works
 	}
 
 	/**

@@ -13,6 +13,8 @@ public class DriveCommand extends AutonomousCommand{
 	private static Encoder driveLeftEnc = RobotMap.driveLeftEnc;
 	private static Encoder driveRightEnc = RobotMap.driveRightEnc;
 	
+	private static double inch = 28.639618;//convert inches to degrees
+	
 	private double leftEncGoal;
 	private double rightEncGoal;
 	private double drivePower;

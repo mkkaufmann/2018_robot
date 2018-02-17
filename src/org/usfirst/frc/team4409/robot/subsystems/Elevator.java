@@ -3,6 +3,7 @@ package org.usfirst.frc.team4409.robot.subsystems;
 import org.usfirst.frc.team4409.robot.RobotMap;
 import org.usfirst.frc.team4409.robot.commands.ArcadeDrive;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -26,7 +27,29 @@ public class Elevator extends Subsystem {
     }
     
     public void TeleopDrive(Joystick Driver) {
-    	ElevatorDrive.arcadeDrive(Driver.getY(),-Driver.getX());
+    	//use hall effect sensors to prevent crazy drivers from destroying the lift.
+    	if (!RobotMap.topSwitch.get()){//top switch is activated(yes, false)
+    		if (Driver.getY() < -0.01){//only allow lift to go down
+    			ElevatorDrive.arcadeDrive(-Driver.getY(),0);
+    		}
+    		else{
+    			ElevatorDrive.drive(0, 0);
+    		}
+    	}
+    	else if (!RobotMap.bottomSwitch.get()){//bottom switch is activated
+    		if (Driver.getY() > 0.01){//only allow lift to go down
+    			ElevatorDrive.arcadeDrive(-Driver.getY(),0);
+    		}
+    		else{
+    			ElevatorDrive.drive(0, 0);
+    		}
+    	}
+    	else{
+    		ElevatorDrive.arcadeDrive(-Driver.getY(),0);
+    	}
+    	if (!RobotMap.topSwitch.get() && !RobotMap.bottomSwitch.get()){
+    		DriverStation.reportWarning("Both limits triggered. Get help.", false);
+    	}
     	
     }
     

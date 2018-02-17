@@ -24,10 +24,7 @@ public class LiftCommand extends AutonomousCommand{
 	@Override
 	public boolean Run(){
 		double speed = 0;
-		if(Math.abs(liftEnc.getDistance()*RobotMap.EncScale)<encGoal){
-			speed = power;
-		}
-		if(Math.abs(liftEnc.getDistance()*RobotMap.EncScale)<encGoal){
+		if(Math.abs(liftEnc.getDistance()*RobotMap.EncScale)<encGoal*19.098593171/*change this to proper number*/){
 			speed = power;
 		}
 		

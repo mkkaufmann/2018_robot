@@ -7,27 +7,30 @@
 
 package org.usfirst.frc.team4409.robot;
 
-import org.usfirst.frc.team4409.robot.commands.CloseClaw;
+
 import org.usfirst.frc.team4409.robot.commands.OpenClaw;
+import org.usfirst.frc.team4409.robot.commands.SwapClaw;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team4409.robot.RobotMap;
+import org.usfirst.frc.team4409.robot.commands.ToggleButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+	public static boolean clawState = false;
 	Joystick Driver = new Joystick(0);
-	Joystick Loser = new Joystick(1);
-	Button trigger = new JoystickButton(Loser, 1);
-	
+	Joystick NotDriver = new Joystick(1);
+	JoystickButton toggle = new JoystickButton(NotDriver, 1);
 	public OI() {
-		trigger.whenPressed(new CloseClaw());
-		trigger.whenReleased(new OpenClaw());
-		
+		//toggle.whenPressed(new OpenClaw(), new CloseClaw());
+		//trigger.whenReleased(new OpenClaw());
+		toggle.whenPressed(new SwapClaw(clawState));
+		toggle.whenReleased(new OpenClaw());
 	}
 	
 	public Joystick getJoystick() {
@@ -35,7 +38,7 @@ public class OI {
 	}
 	
 	public Joystick getSecondJoystick() {
-		return Loser;
+		return NotDriver;
 	}
 			
 }

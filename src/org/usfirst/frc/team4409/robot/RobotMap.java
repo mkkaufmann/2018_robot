@@ -36,15 +36,17 @@ public class RobotMap {
 	public static Talon elevatorLeft = new Talon(3);
 	public static Talon elevatorRight = new Talon(0);
 	
-	public static DigitalInput topLeftSwitch = new DigitalInput(0);
-	public static DigitalInput bottomLeftSwitch = new DigitalInput(1);
-	public static DigitalInput bottomRightSwitch = new DigitalInput(2);
-	public static DigitalInput topRightSwitch = new DigitalInput(3);
+	public static DigitalInput bottomSwitch = new DigitalInput(2);
+	public static DigitalInput topSwitch = new DigitalInput(3);
 	
 	public static Encoder liftEnc = new Encoder(4,5);
 	
-	public static double LiftTop = -35000000;//encoder variables
-	public static double LiftBottom = 35000000;
-	public static double EncScale = 0.17578125;
+	public static final double LiftTop = -35000000;//encoder variables
+	public static final double LiftBottom = 35000000;
+	public static final double EncScale = 0.17578125;
+	
+	public static int theScale = 0;
+	public static final boolean ClawOpen = false;
+	public static final boolean ClawClose = true;
 
 }

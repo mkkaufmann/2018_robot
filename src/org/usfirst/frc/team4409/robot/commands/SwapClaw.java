@@ -1,26 +1,41 @@
 package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.Robot;
+import org.usfirst.frc.team4409.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CloseClaw extends Command {
+public class SwapClaw extends Command {
 	boolean finished = false;
+	boolean state;
 
-    public CloseClaw() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+  
+
+    public SwapClaw(boolean m_state) {
+		// TODO Auto-generated constructor stub
     	requires(Robot.claw);
-    }
+    	state = m_state;
+    	m_state = !m_state;
+	}
 
-    // Called just before this Command runs the first time
+	// Called just before this Command runs the first time
     protected void initialize() {
     	Robot.claw.close();
     	Robot.claw.setOpen(false);
-    	
+    	/*
+    	if (state == true){
+    		Robot.claw.close();
+        	Robot.claw.setOpen(false);
+    	}
+    	else{
+    		Robot.claw.open();
+        	Robot.claw.setOpen(true);
+    	}
+    	*/
     }
 
     // Called repeatedly when this Command is scheduled to run

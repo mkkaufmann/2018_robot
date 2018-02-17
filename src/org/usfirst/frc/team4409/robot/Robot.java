@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4409.robot.autonomous.Baseline;
+import org.usfirst.frc.team4409.robot.autonomous.RightAuto;
+import org.usfirst.frc.team4409.robot.autonomous.SwitchFromCenter;
 //import org.usfirst.frc.team4409.robot.commands.ElevatorDrive;
 import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
@@ -40,9 +42,14 @@ public class Robot extends IterativeRobot {
 	public static final Elevator ELEVATOR_DRIVE = new Elevator();
 	//public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	Baseline base;
+	SwitchFromCenter scoreSwitch;
+	RightAuto rightAuto;
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser m_chooser = new SendableChooser();
+	SendableChooser scalePref = new SendableChooser();
 	double angle;
+	int mode;
+	boolean clawState;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -51,9 +58,17 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		m_chooser.addDefault("Baseline", 0);
+		m_chooser.addObject("No auto", 1);
+		m_chooser.addObject("Switch", 2);
+		m_chooser.addObject("Right", 3);
+		m_chooser.addObject("Left", 4);
+		
+		scalePref.addDefault("Switch", 0);
+		scalePref.addObject("Scale", 1);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("Prefer Scale or Switch?", scalePref);
 		SmartDashboard.putBoolean("Smartdashboard/example_variable", true);
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		
@@ -61,6 +76,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.liftEnc.reset();//Set encoder to 0
 		
 		CameraServer.getInstance().startAutomaticCapture();//hope camera works
+		
 	}
 
 	/**
@@ -91,14 +107,23 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		//m_autonomousCommand = m_chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
+		RobotMap.driveLeftEnc.reset();
+		RobotMap.driveRightEnc.reset();
+		
+		//auton modes
 		base = new Baseline();
+		scoreSwitch = new SwitchFromCenter();
+		rightAuto = new RightAuto();
+		
+		mode = (int) m_chooser.getSelected();
+		RobotMap.theScale = (int) scalePref.getSelected();
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -112,7 +137,23 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		base.Run();
+		//base.Run();
+		switch(mode){
+			case 0:
+				base.Run();
+				break;
+			case 1:
+				//don't do anything
+				break;
+			case 2://center
+				scoreSwitch.Run();
+				break;
+			case 3://right
+				rightAuto.Run();
+				break;
+			case 4://left
+				
+		}
 		UpdateDash();
 	}
 
@@ -176,9 +217,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right drive encoder",RobotMap.driveRightEnc.getDistance());
 		SmartDashboard.putNumber("Left drive encoder", RobotMap.driveLeftEnc.getDistance());
 		SmartDashboard.putNumber("Lift encoder", RobotMap.liftEnc.getDistance());
-		SmartDashboard.putBoolean("Lift magnet sensor top left", RobotMap.topLeftSwitch.get());
-		SmartDashboard.putBoolean("Lift magnet sensor top right", RobotMap.topRightSwitch.get());
-		SmartDashboard.putBoolean("Lift magnet sensor bottom left", RobotMap.bottomLeftSwitch.get());
-		SmartDashboard.putBoolean("Lift magnet sensor bottom right", RobotMap.bottomRightSwitch.get());
+		SmartDashboard.putBoolean("Lift magnet sensor top", RobotMap.topSwitch.get());
+		SmartDashboard.putBoolean("Lift magnet sensor bottom", RobotMap.bottomSwitch.get());
 	}
 }

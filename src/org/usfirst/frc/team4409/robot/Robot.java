@@ -116,8 +116,8 @@ public class Robot extends IterativeRobot {
 		 */
 		RobotMap.driveLeftEnc.reset();
 		RobotMap.driveRightEnc.reset();
-		
 		//auton modes
+
 		base = new Baseline();
 		scoreSwitch = new SwitchFromCenter();
 		rightAuto = new RightAuto();

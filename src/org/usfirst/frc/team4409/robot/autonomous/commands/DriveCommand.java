@@ -33,16 +33,21 @@ public class DriveCommand extends AutonomousCommand{
 	public boolean Run(){
 		double left = 0;
 		double right = 0;
+
 		if (holdLift == true){
 			elevatorLeft.set(-0.08);
 			elevatorRight.set(0.08);
+
 		}
+
 		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal*degreesToIn){
 			left = drivePower;
 		}
 		if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal*degreesToIn){
 			right = -drivePower;
+
 		}
+		
 		if(left == 0 && right == 0){
 			driveLeftEnc.reset();
 			driveRightEnc.reset();
@@ -50,8 +55,8 @@ public class DriveCommand extends AutonomousCommand{
 		}else{
 			frontLeft.set(left);
 			backLeft.set(left);
-			frontRight.set(right);
-			backRight.set(right);
+			frontRight.set(-right);
+			backRight.set(-right);
 			return false;
 		}
 	}

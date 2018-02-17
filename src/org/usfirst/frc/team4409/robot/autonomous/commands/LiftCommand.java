@@ -13,6 +13,7 @@ public class LiftCommand extends AutonomousCommand{
 	private static Talon elevatorLeft = RobotMap.elevatorLeft;
 	private static Talon elevatorRight = RobotMap.elevatorRight;
 	private double encGoal;
+
 	private double power;
 	
 	public LiftCommand(double _amount,double _power) {
@@ -37,3 +38,4 @@ public class LiftCommand extends AutonomousCommand{
 		}
 	}
 } 
+

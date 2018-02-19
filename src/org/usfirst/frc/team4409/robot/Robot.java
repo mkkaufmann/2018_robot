@@ -20,7 +20,6 @@ import org.usfirst.frc.team4409.robot.autonomous.Baseline;
 import org.usfirst.frc.team4409.robot.autonomous.RightAuto;
 import org.usfirst.frc.team4409.robot.autonomous.SwitchFromCenter;
 //import org.usfirst.frc.team4409.robot.commands.ElevatorDrive;
-import org.usfirst.frc.team4409.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4409.robot.subsystems.Claw;
 import org.usfirst.frc.team4409.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4409.robot.subsystems.Elevator;
@@ -45,8 +44,8 @@ public class Robot extends IterativeRobot {
 	SwitchFromCenter scoreSwitch;
 	RightAuto rightAuto;
 	Command m_autonomousCommand;
-	SendableChooser m_chooser = new SendableChooser();
-	SendableChooser scalePref = new SendableChooser();
+	SendableChooser<Integer> m_chooser = new SendableChooser<Integer>();
+	public static SendableChooser<Integer> scalePref = new SendableChooser<Integer>();
 	double angle;
 	int mode;
 	boolean clawState;
@@ -66,6 +65,8 @@ public class Robot extends IterativeRobot {
 		
 		scalePref.addDefault("Switch", 0);
 		scalePref.addObject("Scale", 1);
+		scalePref.addObject("Force Switch", 2);
+		scalePref.addObject("Force Scale", 3);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Prefer Scale or Switch?", scalePref);

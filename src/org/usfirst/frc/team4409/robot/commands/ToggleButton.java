@@ -1,14 +1,8 @@
 package org.usfirst.frc.team4409.robot.commands;
 
-import org.usfirst.frc.team4409.robot.Robot;
-import org.usfirst.frc.team4409.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class ToggleButton extends Button{
 	private final GenericHID m_joystick;

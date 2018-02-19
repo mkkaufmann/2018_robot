@@ -1,13 +1,7 @@
 package org.usfirst.frc.team4409.robot.commands;
 
-import java.awt.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4409.robot.subsystems.DriveTrain;
 
-/**
- *
- */
 public class ArcadeDrive extends Command {
 
     public ArcadeDrive() {

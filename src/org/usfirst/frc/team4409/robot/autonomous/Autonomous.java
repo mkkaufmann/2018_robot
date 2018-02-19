@@ -2,7 +2,6 @@ package org.usfirst.frc.team4409.robot.autonomous;
 
 import java.util.ArrayList;
 
-import org.usfirst.frc.team4409.robot.Robot;
 import org.usfirst.frc.team4409.robot.RobotMap;
 import org.usfirst.frc.team4409.robot.autonomous.commands.AutonomousCommand;
 

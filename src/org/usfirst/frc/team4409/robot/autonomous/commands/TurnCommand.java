@@ -44,12 +44,14 @@ public class TurnCommand extends AutonomousCommand{
 		if(left == 0 && right == 0){
 			driveLeftEnc.reset();
 			driveRightEnc.reset();
+			System.out.println("turn");
 			return true;
 		}else{
 			frontLeft.set(left);
 			backLeft.set(left);
 			frontRight.set(right);
 			backRight.set(right);
+			System.out.println("turn");
 			return false;
 		}
 	}

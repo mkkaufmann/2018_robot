@@ -1,21 +1,18 @@
 package org.usfirst.frc.team4409.robot.subsystems;
 
 import org.usfirst.frc.team4409.robot.RobotMap;
-import org.usfirst.frc.team4409.robot.commands.ArcadeDrive;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  *
  */
 public class Elevator extends Subsystem {
 	
-	private RobotDrive ElevatorDrive = new RobotDrive(RobotMap.elevatorLeft,RobotMap.elevatorRight);
+	private DifferentialDrive ElevatorDrive = new DifferentialDrive(RobotMap.elevatorLeft,RobotMap.elevatorRight);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -33,7 +30,7 @@ public class Elevator extends Subsystem {
     			ElevatorDrive.arcadeDrive(-Driver.getY(),0);
     		}
     		else{
-    			ElevatorDrive.drive(0, 0);
+    			ElevatorDrive.arcadeDrive(0, 0);
     		}
     	}
     	else if (!RobotMap.bottomSwitch.get()){//bottom switch is activated
@@ -41,7 +38,7 @@ public class Elevator extends Subsystem {
     			ElevatorDrive.arcadeDrive(-Driver.getY(),0);
     		}
     		else{
-    			ElevatorDrive.drive(0, 0);
+    			ElevatorDrive.arcadeDrive(0, 0);
     		}
     	}
     	else{
@@ -54,7 +51,7 @@ public class Elevator extends Subsystem {
     }
     
     public void stop() {
- 	   ElevatorDrive.drive(0, 0);
+ 	   ElevatorDrive.arcadeDrive(0, 0);
     }
     
     public void setSpeed(double speed, double turning) {

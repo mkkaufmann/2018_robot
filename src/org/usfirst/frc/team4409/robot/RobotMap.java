@@ -48,5 +48,11 @@ public class RobotMap {
 	public static int theScale = 0;
 	public static final boolean ClawOpen = false;
 	public static final boolean ClawClose = true;
-
+	
+	//L/R auto constants
+	public static final double driveToSwitch = 100;
+	public static final double driveToScale = 300;
+	public static final double driveToSwitch2 = 20;
+	public static final double driveToScale2 = 5;
+	public static final double baseline = 97;
 }

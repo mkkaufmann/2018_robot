@@ -12,10 +12,7 @@ import org.usfirst.frc.team4409.robot.commands.OpenClaw;
 import org.usfirst.frc.team4409.robot.commands.SwapClaw;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team4409.robot.RobotMap;
-import org.usfirst.frc.team4409.robot.commands.ToggleButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator

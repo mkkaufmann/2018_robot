@@ -1,12 +1,7 @@
 package org.usfirst.frc.team4409.robot.commands;
 
-import org.usfirst.frc.team4409.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class ElevatorDrive extends Command {
 
 	public ElevatorDrive() {

@@ -1,9 +1,5 @@
 package org.usfirst.frc.team4409.robot.autonomous.commands;
 
-import org.usfirst.frc.team4409.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 
 public class WaitCommand extends AutonomousCommand{

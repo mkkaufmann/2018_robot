@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4409.robot.autonomous.commands;
 
-import org.usfirst.frc.team4409.robot.Robot;
 import org.usfirst.frc.team4409.robot.RobotMap;
-import org.usfirst.frc.team4409.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
@@ -30,10 +28,12 @@ public class LiftCommand extends AutonomousCommand{
 		}
 		
 		if(speed == 0){
+			System.out.println("stop lift");
 			return true;
 		}else{
 			elevatorLeft.set(-speed);
 			elevatorRight.set(speed);
+			System.out.println("lift");
 			return false;
 		}
 	}

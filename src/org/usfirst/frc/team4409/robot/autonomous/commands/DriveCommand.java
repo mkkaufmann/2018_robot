@@ -51,12 +51,14 @@ public class DriveCommand extends AutonomousCommand{
 		if(left == 0 && right == 0){
 			driveLeftEnc.reset();
 			driveRightEnc.reset();
+			System.out.println("stop drive");
 			return true;
 		}else{
 			frontLeft.set(left);
 			backLeft.set(left);
-			frontRight.set(-right);
-			backRight.set(-right);
+			frontRight.set(right);
+			backRight.set(right);
+			System.out.println("drive");
 			return false;
 		}
 	}

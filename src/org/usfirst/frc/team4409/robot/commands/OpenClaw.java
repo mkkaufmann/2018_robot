@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.Robot;
-import org.usfirst.frc.team4409.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

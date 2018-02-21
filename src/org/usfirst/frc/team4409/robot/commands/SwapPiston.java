@@ -1,23 +1,29 @@
 package org.usfirst.frc.team4409.robot.commands;
 
-import org.usfirst.frc.team4409.robot.Robot;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
-public class OpenClaw extends Command {
-
-    public OpenClaw() {
+public class SwapPiston extends Command {
+	DoubleSolenoid piston;
+    public SwapPiston(DoubleSolenoid _piston) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.claw);
+    	piston = _piston;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.claw.open();
-    	Robot.claw.setOpen(true);
+    	SmartDashboard.putBoolean("PistonState", piston.get() == Value.kForward);
+    	if(piston.get() == Value.kForward){//print piston position to dashboard
+    		piston.set(Value.kReverse);
+    		SmartDashboard.putString("Piston: ", "Back");
+    	}
+    	else{
+    		piston.set(Value.kForward);
+    		SmartDashboard.putString("Piston: ", "Back");
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

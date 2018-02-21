@@ -1,38 +1,39 @@
 package org.usfirst.frc.team4409.robot.commands;
 
 import org.usfirst.frc.team4409.robot.Robot;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class SwapClaw extends Command {
-	boolean finished = false;
+public class FirePiston extends Command {
 	boolean state;
-
-  
-
-    public SwapClaw(boolean m_state) {
-		// TODO Auto-generated constructor stub
+	DoubleSolenoid piston;
+	
+    public FirePiston(DoubleSolenoid _piston, boolean _state) {
     	requires(Robot.claw);
-    	state = m_state;
-    	m_state = !m_state;
-	}
+    	state = _state;
+    	piston = _piston;
+    }
 
-	// Called just before this Command runs the first time
+    // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.claw.close();
-    	Robot.claw.setOpen(false);
-    	/*
-    	if (state == true){
-    		Robot.claw.close();
-        	Robot.claw.setOpen(false);
+    	if(piston.get() == Value.kForward){//print piston position to dashboard
+    		//SmartDashboard.putString("Piston: ", "Foward");
     	}
     	else{
-    		Robot.claw.open();
-        	Robot.claw.setOpen(true);
+    		//SmartDashboard.putString("Piston: ", "Back");
     	}
-    	*/
+    	if (state == true){//piston foward
+    		piston.set(Value.kForward);
+    	}
+    	else{//piston reverse
+    		piston.set(Value.kReverse);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,7 +47,6 @@ public class SwapClaw extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.claw.open();
     }
 
     // Called when another command which requires one or more of the same
@@ -54,8 +54,4 @@ public class SwapClaw extends Command {
     protected void interrupted() {
     }
     
-    public void setFinished(boolean finished){
-    	this.finished = finished;
-    }
-   
 }

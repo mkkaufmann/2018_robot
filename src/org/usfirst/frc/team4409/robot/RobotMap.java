@@ -33,6 +33,7 @@ public class RobotMap {
 	public static Encoder driveLeftEnc = new Encoder(8,9);
 	
 	public static DoubleSolenoid claw = new DoubleSolenoid(0,1);
+	public static DoubleSolenoid lock = new DoubleSolenoid(4,5);
 	public static Talon elevatorLeft = new Talon(3);
 	public static Talon elevatorRight = new Talon(0);
 	

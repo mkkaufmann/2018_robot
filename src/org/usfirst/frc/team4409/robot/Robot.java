@@ -72,6 +72,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Prefer Scale or Switch?", scalePref);
 		SmartDashboard.putBoolean("Smartdashboard/example_variable", true);
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
+		SmartDashboard.putNumber("Auto Wait", 0);
 		
 		//gyro = new ADXRS450_Gyro();
 		RobotMap.liftEnc.reset();//Set encoder to 0
@@ -220,5 +221,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Lift encoder", RobotMap.liftEnc.getDistance());
 		SmartDashboard.putBoolean("Lift magnet sensor top", RobotMap.topSwitch.get());
 		SmartDashboard.putBoolean("Lift magnet sensor bottom", RobotMap.bottomSwitch.get());
+		SmartDashboard.getNumber("Auto Wait", 0);
 	}
 }

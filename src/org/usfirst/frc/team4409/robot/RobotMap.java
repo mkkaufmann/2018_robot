@@ -50,7 +50,7 @@ public class RobotMap {
 	public static final boolean ClawOpen = false;
 	public static final boolean ClawClose = true;
 	
-	//L/R auto constants
+	//auto constants
 	public static final double driveToSwitch = 100;
 	public static final double driveToScale = 300;
 	public static final double driveToSwitch2 = 20;

@@ -65,11 +65,11 @@ public class Robot extends IterativeRobot {
 		
 		scalePref.addDefault("Switch", 0);
 		scalePref.addObject("Scale", 1);
-		scalePref.addObject("Force Switch", 2);
-		scalePref.addObject("Force Scale", 3);
+		scalePref.addObject("Switch Only", 2);
+		scalePref.addObject("Scale Only", 3);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		SmartDashboard.putData("Prefer Scale or Switch?", scalePref);
+		SmartDashboard.putData("Prioritize Scale or Switch?", scalePref);
 		SmartDashboard.putBoolean("Smartdashboard/example_variable", true);
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		SmartDashboard.putNumber("Auto Wait", 0);

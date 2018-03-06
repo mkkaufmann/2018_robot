@@ -23,7 +23,8 @@ public class OI {
 	Joystick Driver = new Joystick(0);
 	Joystick NotDriver = new Joystick(1);
 	JoystickButton toggle = new JoystickButton(NotDriver, 1);
-	JoystickButton ohGodTheLiftNeedsToStop = new JoystickButton(NotDriver,3);
+	JoystickButton ohGodTheLiftNeedsToStop = new JoystickButton(NotDriver,8);
+	JoystickButton releaseLock = new JoystickButton(NotDriver,9);
 	JoystickButton swapTest = new JoystickButton(NotDriver,10);
 	public OI() {
 		//toggle.whenPressed(new OpenClaw(), new CloseClaw());
@@ -31,7 +32,7 @@ public class OI {
 		toggle.whenPressed(new FirePiston(RobotMap.claw,true));
 		toggle.whenReleased(new FirePiston(RobotMap.claw,false));
 		ohGodTheLiftNeedsToStop.whenPressed(new FirePiston(RobotMap.lock,true));
-		ohGodTheLiftNeedsToStop.whenReleased(new FirePiston(RobotMap.lock,false));
+		releaseLock.whenPressed(new FirePiston(RobotMap.lock,false));
 		swapTest.whenPressed(new SwapPiston(RobotMap.claw));
 	}
 	

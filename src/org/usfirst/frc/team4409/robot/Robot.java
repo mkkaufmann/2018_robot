@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4409.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.ADXL345_SPI;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
 	double angle;
 	int mode;
 	boolean clawState;
+	String gameData;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -118,14 +120,29 @@ public class Robot extends IterativeRobot {
 		 */
 		RobotMap.driveLeftEnc.reset();
 		RobotMap.driveRightEnc.reset();
-		//auton modes
-
-		base = new Baseline();
-		scoreSwitch = new SwitchFromCenter();
-		rightAuto = new RightAuto();
 		
-		mode = (int) m_chooser.getSelected();
-		RobotMap.theScale = (int) scalePref.getSelected();
+		//check if gamedata exists
+		try{
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			
+			if (gameData.length() < 1){
+				DriverStation.reportWarning("No field data!(null)", false);
+				base = new Baseline();
+				mode = 0;
+			}
+			else{//game data is good
+				//auton modes
+				base = new Baseline();
+				scoreSwitch = new SwitchFromCenter();
+				rightAuto = new RightAuto();
+				
+				mode = (int) m_chooser.getSelected();
+			}
+		}catch (Exception e){
+			DriverStation.reportWarning(e.getMessage(), false);
+		}
+		
+		//RobotMap.theScale = (int) scalePref.getSelected();
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {

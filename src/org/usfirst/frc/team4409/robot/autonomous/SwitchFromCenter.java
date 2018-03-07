@@ -2,6 +2,7 @@ package org.usfirst.frc.team4409.robot.autonomous;
 
 import org.usfirst.frc.team4409.robot.autonomous.commands.*;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SwitchFromCenter extends Autonomous{
 	
@@ -14,6 +15,7 @@ public class SwitchFromCenter extends Autonomous{
 		double turnSpeed = 0.5;
 		
 		gameData = DriverStation.getInstance().getGameSpecificMessage();//get the switch position
+		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
 		commands.add(new LiftCommand(52,0.45));

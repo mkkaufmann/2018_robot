@@ -3,6 +3,7 @@ package org.usfirst.frc.team4409.robot.autonomous;
 import org.usfirst.frc.team4409.robot.autonomous.commands.*;
 import org.usfirst.frc.team4409.robot.RobotMap;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4409.robot.*;
 
@@ -22,19 +23,22 @@ public class RightAuto extends Autonomous{
 		if (gameData.charAt(1) == 'R'){
 			canScale = true;
 		}else{canScale = false;}
-		
+		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
 		commands.add(new LiftCommand(45,0.45));
 		if (prefrence == 0){
 			if(canSwitch){
+				
 				ScoreSwitch();
 			}
 			else if(canScale){
+				
 				ScoreScale();
 			}
 			else{
 				//just drive across the base line
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}
 		}
@@ -49,12 +53,14 @@ public class RightAuto extends Autonomous{
 			}
 			else{
 				//just drive across the base line
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}
 		}
 		
 		else if(prefrence == 2){//Only switch
 			if(canScale){
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}
 			else if(canSwitch){
@@ -63,6 +69,7 @@ public class RightAuto extends Autonomous{
 			}
 			else{
 				//just drive across the base line
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}
 		}
@@ -72,16 +79,19 @@ public class RightAuto extends Autonomous{
 				ScoreScale(); 
 			}
 			else if(canSwitch){
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}
 			else{
 				//just drive across the base line
+				DriverStation.reportWarning("baseline", false);
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
 			}	
 		}
 	}
 	public void ScoreSwitch(){
 		//go for switch
+		DriverStation.reportWarning("switch", false);
 		commands.add(new DriveCommand(RobotMap.driveToSwitch,RobotMap.driveToSwitch,0.4,true));
 		commands.add(new TurnCommand(nintyTurn,0.4,true));
 		commands.add(new DriveCommand(RobotMap.driveToSwitch2,RobotMap.driveToSwitch2,0.4,true));
@@ -90,6 +100,7 @@ public class RightAuto extends Autonomous{
 	}
 	public void ScoreScale(){
 		//go for scale
+		DriverStation.reportWarning("scale", false);
 		commands.add(new DriveCommand(RobotMap.driveToScale,RobotMap.driveToScale,0.4,true));
 		commands.add(new TurnCommand(nintyTurn,0.4,true));
 		commands.add(new DriveCommand(RobotMap.driveToScale2,RobotMap.driveToScale2,0.4,true));

@@ -3,6 +3,7 @@ package org.usfirst.frc.team4409.robot.autonomous;
 import org.usfirst.frc.team4409.robot.autonomous.commands.*;
 import org.usfirst.frc.team4409.robot.RobotMap;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4409.robot.*;
 
@@ -16,13 +17,13 @@ public class LeftAuto extends Autonomous{
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		prefrence = (int) Robot.scalePref.getSelected();
-		if (gameData.charAt(0) == 'R'){//where can we score?
+		if (gameData.charAt(0) == 'L'){//where can we score?
 			canSwitch = true;
 		}else{canSwitch = false;}
-		if (gameData.charAt(1) == 'R'){
+		if (gameData.charAt(1) == 'L'){
 			canScale = true;
 		}else{canScale = false;}
-		
+		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
 		commands.add(new LiftCommand(45,0.45));

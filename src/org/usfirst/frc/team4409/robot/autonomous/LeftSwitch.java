@@ -6,6 +6,6 @@ public class LeftSwitch extends Autonomous{
 	
 	public LeftSwitch() {
 		super();
-		commands.add(new DriveCommand(30,-30,0.35,false));
+		commands.add(new DriveCommand(30,-30,0.35,false,2));
 	}
 }

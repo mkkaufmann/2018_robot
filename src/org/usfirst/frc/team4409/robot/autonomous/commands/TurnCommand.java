@@ -2,9 +2,11 @@ package org.usfirst.frc.team4409.robot.autonomous.commands;
 
 import org.usfirst.frc.team4409.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
 
 public class TurnCommand extends AutonomousCommand{
 	private static Spark frontLeft = RobotMap.frontLeft;
@@ -21,16 +23,31 @@ public class TurnCommand extends AutonomousCommand{
 	private double drivePower;
 	private boolean holdLift;
 	
-	public TurnCommand(double _distance, double _power, boolean _holdLift){
+	private Timer timer;
+	private boolean running = false;
+	private double period;
+
+	public TurnCommand(double _distance, double _power, boolean _holdLift,double _period){
 		leftEncGoal = _distance;
 		rightEncGoal = _distance;
 		drivePower = _power;
 		holdLift = _holdLift;
+		period = _period;
+		timer = new Timer();
 	}
 	@Override
 	public boolean Run(){
 		double left = 0;
 		double right = 0;
+		if(!running){
+			timer.start();
+			running = true;
+		}
+		if(timer.hasPeriodPassed(period)){
+			timer.stop();
+			DriverStation.reportWarning("Timeout expired!(turn)", false);
+			return true;
+		}
 		if (holdLift == true){
 			elevatorLeft.set(-0.08);
 			elevatorRight.set(0.08);

@@ -26,7 +26,7 @@ public class RightAuto extends Autonomous{
 		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
-		commands.add(new LiftCommand(45,0.45));
+		commands.add(new LiftCommand(45,0.45,3));
 		if (prefrence == 0){
 			if(canSwitch){
 				
@@ -39,7 +39,7 @@ public class RightAuto extends Autonomous{
 			else{
 				//just drive across the base line
 				DriverStation.reportWarning("baseline R-1", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}
 		}
 		else if (prefrence == 1){//want scale
@@ -54,14 +54,14 @@ public class RightAuto extends Autonomous{
 			else{
 				//just drive across the base line
 				DriverStation.reportWarning("baseline R-2", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}
 		}
 		
 		else if(prefrence == 2){//Only switch
 			if(canScale){
 				DriverStation.reportWarning("baseline R-3", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}
 			else if(canSwitch){
 				//go for switch
@@ -70,7 +70,7 @@ public class RightAuto extends Autonomous{
 			else{
 				//just drive across the base line
 				DriverStation.reportWarning("baseline R-4", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}
 		}
 		else if(prefrence == 3){//Only Scale
@@ -80,30 +80,30 @@ public class RightAuto extends Autonomous{
 			}
 			else if(canSwitch){
 				DriverStation.reportWarning("baseline R-5", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}
 			else{
 				//just drive across the base line
 				DriverStation.reportWarning("baseline R-6", false);
-				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true));
+				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,2));
 			}	
 		}
 	}
 	public void ScoreSwitch(){
 		//go for switch
 		DriverStation.reportWarning("switch", false);
-		commands.add(new DriveCommand(RobotMap.driveToSwitchY,RobotMap.driveToSwitchY,0.4,true));
-		commands.add(new TurnCommand(nintyTurn,0.4,true));
-		commands.add(new DriveCommand(RobotMap.driveToSwitchX,RobotMap.driveToSwitchX,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToSwitchY,RobotMap.driveToSwitchY,0.4,true,1.5));
+		commands.add(new TurnCommand(nintyTurn,0.4,true,1.5));
+		commands.add(new DriveCommand(RobotMap.driveToSwitchX,RobotMap.driveToSwitchX,0.4,true,1));
 		commands.add(new WaitCommand(0.3));
 		commands.add(new ClawCommand(false));
 	}
 	public void ScoreScale(){
 		//go for scale
 		DriverStation.reportWarning("scale", false);
-		commands.add(new DriveCommand(RobotMap.driveToScaleY,RobotMap.driveToScaleY,0.4,true));
-		commands.add(new TurnCommand(nintyTurn,0.4,true));
-		commands.add(new DriveCommand(RobotMap.driveToScaleX,RobotMap.driveToScaleX,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToScaleY,RobotMap.driveToScaleY,0.4,true,3));
+		commands.add(new TurnCommand(nintyTurn,0.4,true,1.5));
+		commands.add(new DriveCommand(RobotMap.driveToScaleX,RobotMap.driveToScaleX,0.4,true,1));
 		commands.add(new WaitCommand(0.3));
 		commands.add(new ClawCommand(false));
 	}

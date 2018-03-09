@@ -10,7 +10,7 @@ public class Baseline extends Autonomous{
 	public Baseline() {
 		super();
 		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
-		commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.35,false));
+		commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.35,false,2));
 
 	}
 

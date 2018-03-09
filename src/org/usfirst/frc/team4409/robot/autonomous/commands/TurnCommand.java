@@ -35,10 +35,8 @@ public class TurnCommand extends AutonomousCommand{
 			elevatorLeft.set(-0.08);
 			elevatorRight.set(0.08);
 		}
-		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal){
+		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal && Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
 			left = drivePower;
-		}
-		if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
 			right = drivePower;
 		}
 		if(left == 0 && right == 0){

@@ -40,13 +40,11 @@ public class DriveCommand extends AutonomousCommand{
 
 		}
 
-		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal*degreesToIn){
+		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal*degreesToIn && Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal*degreesToIn){
 			left = drivePower;
-		}
-		if(Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal*degreesToIn){
 			right = -drivePower;
-
 		}
+		
 		
 		if(left == 0 && right == 0){
 			driveLeftEnc.reset();

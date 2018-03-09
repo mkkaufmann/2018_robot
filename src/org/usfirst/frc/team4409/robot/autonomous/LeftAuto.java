@@ -83,17 +83,17 @@ public class LeftAuto extends Autonomous{
 	}
 	public void ScoreSwitch(){
 		//go for switch
-		commands.add(new DriveCommand(RobotMap.driveToSwitch,RobotMap.driveToSwitch,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToSwitchY,RobotMap.driveToSwitchY,0.4,true));
 		commands.add(new TurnCommand(nintyTurn,-0.4,true));
-		commands.add(new DriveCommand(RobotMap.driveToSwitch2,RobotMap.driveToSwitch2,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToSwitchX,RobotMap.driveToSwitchX,0.4,true));
 		commands.add(new WaitCommand(0.3));
 		commands.add(new ClawCommand(false));
 	}
 	public void ScoreScale(){
 		//go for scale
-		commands.add(new DriveCommand(RobotMap.driveToScale,RobotMap.driveToScale,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToScaleY,RobotMap.driveToScaleY,0.4,true));
 		commands.add(new TurnCommand(nintyTurn,-0.4,true));
-		commands.add(new DriveCommand(RobotMap.driveToScale2,RobotMap.driveToScale2,0.4,true));
+		commands.add(new DriveCommand(RobotMap.driveToScaleX,RobotMap.driveToScaleX,0.4,true));
 		commands.add(new WaitCommand(0.3));
 		commands.add(new ClawCommand(false));
 	}

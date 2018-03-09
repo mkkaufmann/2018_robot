@@ -18,7 +18,7 @@ public class SwitchFromCenter extends Autonomous{
 		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
-		commands.add(new LiftCommand(52,0.45));
+		commands.add(new LiftCommand(52,0.65));
 		commands.add(new DriveCommand(15,15,0.55,true));
 		if(gameData.charAt(0) == 'L')
 		  {

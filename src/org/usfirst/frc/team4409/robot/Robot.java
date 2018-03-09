@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4409.robot.autonomous.Baseline;
+import org.usfirst.frc.team4409.robot.autonomous.LeftAuto;
 import org.usfirst.frc.team4409.robot.autonomous.RightAuto;
 import org.usfirst.frc.team4409.robot.autonomous.SwitchFromCenter;
 //import org.usfirst.frc.team4409.robot.commands.ElevatorDrive;
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 	Baseline base;
 	SwitchFromCenter scoreSwitch;
 	RightAuto rightAuto;
+	LeftAuto leftAuto;
 	Command m_autonomousCommand;
 	SendableChooser<Integer> m_chooser = new SendableChooser<Integer>();
 	public static SendableChooser<Integer> scalePref = new SendableChooser<Integer>();
@@ -135,6 +137,7 @@ public class Robot extends IterativeRobot {
 				base = new Baseline();
 				scoreSwitch = new SwitchFromCenter();
 				rightAuto = new RightAuto();
+				leftAuto = new LeftAuto();
 				
 				mode = (int) m_chooser.getSelected();
 			}
@@ -142,7 +145,7 @@ public class Robot extends IterativeRobot {
 			DriverStation.reportWarning(e.getMessage(), false);
 		}
 		
-		//RobotMap.theScale = (int) scalePref.getSelected();
+		
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -157,20 +160,31 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		//base.Run();
+		DriverStation.reportWarning("Selected auto: " + Integer.toString(mode), false);
 		switch(mode){
 			case 0:
+				DriverStation.reportWarning("Selected baseline", false);
 				base.Run();
 				break;
 			case 1:
+				DriverStation.reportWarning("Selected no auto", false);
 				//don't do anything
 				break;
 			case 2://center
+				DriverStation.reportWarning("Selected switch-from-center", false);
 				scoreSwitch.Run();
 				break;
 			case 3://right
+				DriverStation.reportWarning("Selected right auto", false);
 				rightAuto.Run();
 				break;
 			case 4://left
+				DriverStation.reportWarning("Selected left auto", false);
+				leftAuto.Run();
+				break;
+			default:
+				DriverStation.reportWarning("No auto selection!", false);
+				break;
 				
 		}
 		UpdateDash();

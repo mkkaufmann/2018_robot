@@ -23,9 +23,9 @@ public class OI {
 	Joystick Driver = new Joystick(0);
 	Joystick NotDriver = new Joystick(1);
 	JoystickButton toggle = new JoystickButton(NotDriver, 1);
-	JoystickButton ohGodTheLiftNeedsToStop = new JoystickButton(NotDriver,8);
-	JoystickButton releaseLock = new JoystickButton(NotDriver,9);
-	JoystickButton swapTest = new JoystickButton(NotDriver,10);
+	JoystickButton ohGodTheLiftNeedsToStop = new JoystickButton(NotDriver,11);
+	JoystickButton releaseLock = new JoystickButton(NotDriver,12);
+	JoystickButton swapTest = new JoystickButton(NotDriver,8);
 	public OI() {
 		//toggle.whenPressed(new OpenClaw(), new CloseClaw());
 		//trigger.whenReleased(new OpenClaw());

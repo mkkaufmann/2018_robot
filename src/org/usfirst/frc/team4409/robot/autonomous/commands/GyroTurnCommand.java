@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 
-public class TurnCommand extends AutonomousCommand{
+public class GyroTurnCommand extends AutonomousCommand{
 	private static Spark frontLeft = RobotMap.frontLeft;
 	private static Spark frontRight = RobotMap.frontRight;
 	private static Spark backLeft = RobotMap.backLeft;
@@ -18,18 +18,16 @@ public class TurnCommand extends AutonomousCommand{
 	private static Talon elevatorLeft = RobotMap.elevatorLeft;
 	private static Talon elevatorRight = RobotMap.elevatorRight;
 	
-	private double leftEncGoal;
-	private double rightEncGoal;
 	private double drivePower;
 	private boolean holdLift;
+	private double degrees;
 	
 	private Timer timer;
 	private boolean running = false;
 	private double period;
 
-	public TurnCommand(double _distance, double _power, boolean _holdLift,double _period){
-		leftEncGoal = _distance;
-		rightEncGoal = _distance;
+	public GyroTurnCommand(double _degrees, double _power, boolean _holdLift,double _period){
+		degrees = _degrees;
 		drivePower = _power;
 		holdLift = _holdLift;
 		period = _period;
@@ -48,26 +46,11 @@ public class TurnCommand extends AutonomousCommand{
 			DriverStation.reportWarning("Timeout expired!(turn)", false);
 			return true;
 		}
-		if (holdLift == true){
+		if (holdLift){
 			elevatorLeft.set(-0.08);
 			elevatorRight.set(0.08);
 		}
-		if(Math.abs(driveLeftEnc.getDistance()*RobotMap.EncScale)<leftEncGoal && Math.abs(driveRightEnc.getDistance()*RobotMap.EncScale)<rightEncGoal){
-			left = drivePower;
-			right = drivePower;
-		}
-		if(left == 0 && right == 0){
-			driveLeftEnc.reset();
-			driveRightEnc.reset();
-			System.out.println("finished turn");
-			return true;
-		}else{
-			frontLeft.set(left);
-			backLeft.set(left);
-			frontRight.set(right);
-			backRight.set(right);
-			System.out.println("turning");
-			return false;
-		}
+		
+		return false;
 	}
 }

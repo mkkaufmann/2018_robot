@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4409.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.ADXL345_SPI;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
@@ -61,16 +62,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		m_chooser.addDefault("Baseline", 0);
-		m_chooser.addObject("No auto", 1);
-		m_chooser.addObject("Switch", 2);
+		//m_chooser.addDefault("Baseline", 0);
+		//m_chooser.addObject("No auto", 1);
+		m_chooser.addDefault("Center", 2);
 		m_chooser.addObject("Right", 3);
 		m_chooser.addObject("Left", 4);
 		
-		scalePref.addDefault("Switch", 0);
-		scalePref.addObject("Scale", 1);
-		scalePref.addObject("Switch Only", 2);
-		scalePref.addObject("Scale Only", 3);
+		scalePref.addDefault("Switch", 4);
+		//scalePref.addObject("Scale", 1);
+		//scalePref.addObject("Switch Only", 2);
+		//scalePref.addObject("Scale Only", 3);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Prioritize Scale or Switch?", scalePref);
@@ -120,6 +121,11 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
+		
+		//match 48
+		//if (DriverStation.)
+		RobotMap.lock.set(Value.kReverse);
+		
 		RobotMap.driveLeftEnc.reset();
 		RobotMap.driveRightEnc.reset();
 		
@@ -133,7 +139,7 @@ public class Robot extends IterativeRobot {
 				mode = 0;
 			}
 			else{//game data is good
-				//auton modes
+				//G
 				base = new Baseline();
 				scoreSwitch = new SwitchFromCenter();
 				rightAuto = new RightAuto();
@@ -232,10 +238,10 @@ public class Robot extends IterativeRobot {
 		 * (pic in pictures directory of the LABVIEW pc)
 		 * 
 		 */
-		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);
+		Scheduler.getInstance().run();//Something with command based
+		SmartDashboard.putNumber("/Smartdashboard/drive/navx/yaw",6);//Test code for michael's dashboard
 		
-		UpdateDash();
+		UpdateDash();//put sensor data to the dashboard for debugging
 	}
 
 	/**
@@ -243,6 +249,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		/*
+		 * This function would be good for testing experimental code. However,
+		 * we just put it in the real code and hope the drivers don't hate us after
+		 * something goes horribly wrong and breaks the robot after we put code on the robot
+		 * without telling them.
+		 */
 	}
 	
 	public void UpdateDash(){

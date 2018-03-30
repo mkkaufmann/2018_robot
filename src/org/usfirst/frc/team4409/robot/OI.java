@@ -9,6 +9,7 @@ package org.usfirst.frc.team4409.robot;
 
 
 import org.usfirst.frc.team4409.robot.commands.FirePiston;
+import org.usfirst.frc.team4409.robot.commands.SpinIntake;
 import org.usfirst.frc.team4409.robot.commands.SwapPiston;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,6 +24,8 @@ public class OI {
 	Joystick Driver = new Joystick(0);
 	Joystick NotDriver = new Joystick(1);
 	JoystickButton toggle = new JoystickButton(NotDriver, 1);
+	JoystickButton spinIntake = new JoystickButton(NotDriver,2);
+	JoystickButton otherSpin = new JoystickButton(NotDriver,3);
 	JoystickButton ohGodTheLiftNeedsToStop = new JoystickButton(NotDriver,11);
 	JoystickButton releaseLock = new JoystickButton(NotDriver,12);
 	JoystickButton swapTest = new JoystickButton(NotDriver,8);
@@ -32,8 +35,11 @@ public class OI {
 		toggle.whenPressed(new FirePiston(RobotMap.claw,true));
 		toggle.whenReleased(new FirePiston(RobotMap.claw,false));
 		ohGodTheLiftNeedsToStop.whenPressed(new FirePiston(RobotMap.lock,true));
-		releaseLock.whenPressed(new FirePiston(RobotMap.lock,false));
-		swapTest.whenPressed(new SwapPiston(RobotMap.claw));
+		releaseLock.whenPressed(new FirePiston(RobotMap.lock,false));	
+		spinIntake.whileHeld(new SpinIntake(RobotMap.intake,0.5));
+		spinIntake.whenReleased(new SpinIntake(RobotMap.intake,0.0));
+		otherSpin.whileHeld(new SpinIntake(RobotMap.intake,-0.5));
+		otherSpin.whenReleased(new SpinIntake(RobotMap.intake,0.0));
 	}
 	
 	public Joystick getJoystick() {

@@ -54,6 +54,7 @@ public class Robot extends IterativeRobot {
 	int mode;
 	boolean clawState;
 	String gameData;
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -62,7 +63,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		//m_chooser.addDefault("Baseline", 0);
+		m_chooser.addDefault("Baseline", 0);
 		//m_chooser.addObject("No auto", 1);
 		m_chooser.addDefault("Center", 2);
 		m_chooser.addObject("Right", 3);
@@ -79,7 +80,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		SmartDashboard.putNumber("Auto Wait", 0);
 		
-		//gyro = new ADXRS450_Gyro();
 		RobotMap.liftEnc.reset();//Set encoder to 0
 		
 		CameraServer.getInstance().startAutomaticCapture();//hope camera works
@@ -169,22 +169,27 @@ public class Robot extends IterativeRobot {
 		DriverStation.reportWarning("Selected auto: " + Integer.toString(mode), false);
 		switch(mode){
 			case 0:
+				SmartDashboard.putString("auto selector", "baseline");
 				DriverStation.reportWarning("Selected baseline", false);
 				base.Run();
 				break;
 			case 1:
+				SmartDashboard.putString("auto selector", "none");
 				DriverStation.reportWarning("Selected no auto", false);
 				//don't do anything
 				break;
 			case 2://center
+				SmartDashboard.putString("auto selector", "switch from center");
 				DriverStation.reportWarning("Selected switch-from-center", false);
 				scoreSwitch.Run();
 				break;
 			case 3://right
+				SmartDashboard.putString("auto selector", "right");
 				DriverStation.reportWarning("Selected right auto", false);
 				rightAuto.Run();
 				break;
 			case 4://left
+				SmartDashboard.putString("auto selector", "left");
 				DriverStation.reportWarning("Selected left auto", false);
 				leftAuto.Run();
 				break;
@@ -265,5 +270,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Lift magnet sensor top", RobotMap.topSwitch.get());
 		SmartDashboard.putBoolean("Lift magnet sensor bottom", RobotMap.bottomSwitch.get());
 		SmartDashboard.getNumber("Auto Wait", 0);
+		SmartDashboard.putNumber("Gyro: ", RobotMap.gyro.getAngle());
 	}
 }

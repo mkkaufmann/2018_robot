@@ -35,6 +35,14 @@ public class DriveCommand extends AutonomousCommand{
 		period = _period;
 		timer = new Timer();
 	}
+	public DriveCommand(double _distance, double _power, boolean _holdLift, double _period){
+		leftEncGoal = _distance;
+		rightEncGoal = _distance;
+		drivePower = _power;
+		holdLift = _holdLift;
+		period = _period;
+		timer = new Timer();
+	}
 	@Override
 	public boolean Run(){
 		double left = 0;

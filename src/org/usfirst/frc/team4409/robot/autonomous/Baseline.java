@@ -11,7 +11,7 @@ public class Baseline extends Autonomous{
 		super();
 		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.35,false,15));
-
+		//commands.add(new RealGyroTurnCommand(0.35,true,10,90));//test, delete this
 	}
 
 }

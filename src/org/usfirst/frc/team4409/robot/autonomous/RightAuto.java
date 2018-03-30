@@ -90,15 +90,18 @@ public class RightAuto extends Autonomous{
 		}else if(prefrence == SWITCH_SIDE){/*Scale CHANGE THE PRIORITY*/
 			SmartDashboard.putString("auto", "scale (b)");
 			SmartDashboard.putBoolean("work", true);
-			if(canScale){
-				//go for scale
-				SmartDashboard.putString("input", "please help please help work help please");
-				SmartDashboard.putString("auto", "scale (b) SCALE");
-				ScoreScale(); 
-			}
-			else if(canSwitch){
+//			if(canScale){
+//				//go for scale
+//				SmartDashboard.putString("input", "please help please help work help please");
+//				SmartDashboard.putString("auto", "scale (b) SCALE");
+//				ScoreScale(); 
+//			}
+//			else 
+			if(canSwitch){
 				SmartDashboard.putString("auto", "scale (b) SWITCH");
 				ScoreSwitchB();
+			}else if(canScale){
+				ScoreScale();
 			}else{
 				commands.add(new DriveCommand(RobotMap.baseline,RobotMap.baseline,0.4,true,15));
 			}
@@ -113,8 +116,10 @@ public class RightAuto extends Autonomous{
 	}
 	public void ScoreSwitchB(){
 		DriverStation.reportWarning("switch b", false);
+		//public AllCommand(double _distance, double _power, boolean _holdLift,double _liftAmount,double _liftPower, double _period){
 		commands.add(new TurnCommand(20,0.35,true,5));
-		commands.add(new DriveCommand(RobotMap.driveEvenSwitch-20,RobotMap.driveEvenSwitch-20,0.40,true,6));
+		commands.add(new AllCommand(RobotMap.driveEvenSwitch-20,0.40,true,70,0.65,6));
+		//commands.add(new DriveCommand(RobotMap.driveEvenSwitch-20,RobotMap.driveEvenSwitch-20,0.40,true,6));
 		commands.add(new WaitCommand(0.3));
 		commands.add(new TurnCommand(nintyTurn+120,-0.35,true,5));
 		commands.add(new WaitCommand(0.3));
@@ -128,15 +133,18 @@ public class RightAuto extends Autonomous{
 		//90 degree turn to the right
 		//drive foward past switch
 		//90 degree turn to the left
+		SmartDashboard.putBoolean("scale", true);
 		//GYRO(double _power, boolean _holdLift, double _distance, double _period)
-		//commands.add(new GyroDriveCommand(0.5,false,RobotMap.driveToScaleY,10));
-		commands.add(new TurnCommand(-nintyTurn,0.35,false,3));
-		//commands.add(new LiftCommand(45,0.45,3));
-		commands.add(new GyroDriveCommand(0.5,false,RobotMap.driveToScaleX,10));
-		//commands.add(new ClawCommand(false));
-		commands.add(new WaitCommand(1));
-		commands.add(new GyroDriveCommand(-0.5,false,RobotMap.driveToScaleX+10,10));
-		
+		//commands.add(new GyroDriveCommand(0.5,false,210,10));
+		//commands.add(new TurnCommand(500,-0.35,false,3));
+		commands.add(new LiftCommand(135,0.8,3));
+		commands.add(new LiftCommand(10,0.6,3));
+//		//commands.add(new DriveCommand(36,0.40,true,6));
+//		//commands.add(new ClawCommand(false));
+//		commands.add(new WaitCommand(1));
+		//commands.add(new DriveCommand(24,-0.40,true,6));
+
+//		
 		//left version of this is the same just with the turns inverted
 	}
 }

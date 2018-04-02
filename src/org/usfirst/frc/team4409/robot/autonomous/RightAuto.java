@@ -159,7 +159,7 @@ public class RightAuto extends Autonomous{
 		//GYRO(double _power, boolean _holdLift, double _distance, double _period)
 		commands.add(new GyroDriveCommand(0.6,false,210,10));
 		//(double _power, boolean _holdLift,double _period,double degrees){
-		commands.add(new RealGyroTurnCommand(-0.65,true,25,3));
+		commands.add(new GyroTurnCommand(-0.65,true,25,3));
 		commands.add(new LiftCommand(135,0.8,3));
 		commands.add(new LiftCommand(13,0.9,0.5));
 		commands.add(new DriveCommand(26,0.40,true,6));
@@ -196,13 +196,13 @@ public class RightAuto extends Autonomous{
 		commands.add(new DriveCommand(30,-0.40,true,6));*/
 		commands.add(new GyroDriveCommand(0.6,false,196,10));
 		//commands.add(new TurnCommand(300,0.5,false,5));
-		commands.add(new RealGyroTurnCommand(-0.5,true,80,3));
+		commands.add(new GyroTurnCommand(-0.5,true,80,3));
 		commands.add(new GyroDriveCommand(0.6,false,50,10));
 		commands.add(new GyroDriveCommand(0.3,false,50,10));
-		commands.add(new RealGyroTurnCommand(-0.75,true,3,3));
+		commands.add(new GyroTurnCommand(-0.75,true,3,3));
 		commands.add(new GyroDriveCommand(0.6,false,50,10));
 
-		commands.add(new RealGyroTurnCommand(0.75,true,72,3));
+		commands.add(new GyroTurnCommand(0.75,true,72,3));
 		commands.add(new LiftCommand(135,0.8,3));
 		commands.add(new LiftCommand(13,0.9,0.5));
 		commands.add(new GyroDriveCommand(0.6,false,20,10));

@@ -20,21 +20,23 @@ public class SwitchFromCenter extends Autonomous{
 		commands.add(new WaitCommand(SmartDashboard.getNumber("Auto Wait", 0)));
 		commands.add(new ClawCommand(true));
 		commands.add(new WaitCommand(0.2));
-		//public AllCommand(double _distance, double _power, boolean _holdLift,double _liftAmount,double _liftPower, double _period){
+		
+		//commands.add(new ParallelCommand(new LiftCommand(70,0.65,3),new GyroDriveCommand(0.45,false,15)));
 		commands.add(new AllCommand(15,0.45,true,70,0.65,3));
-		//commands.add(new LiftCommand(70,0.65,3));
-		//commands.add(new DriveCommand(15,15,0.45,true,2));
+		
 		commands.add(new WaitCommand(0.2));
 		if(gameData.charAt(0) == 'L')
 		  {
+			/*Ideal state code
+			 * commands.add(new GyroTurnCommand(-0.5,true,45,3));
+			 * commands.add(new GyroDriveCommand(0.6,true,driveAcross+20,4));//THIS VALUE NEEDS TWEAKING
+			 * commands.add(new GyroTurnCommand(0.5,true,45,3));
+			 * commands.add(new GyroDriveCommand(0.6,true,driveToSwitch+10,2.5));//THIS VALUE NEEDS TWEAKING
+			 * */
 			commands.add(new TurnCommand(450,-turnSpeed*1.3,true,10));
-			commands.add(new WaitCommand(0.3));
 			commands.add(new DriveCommand(driveAcross + 20,driveAcross + 20,0.55,true,4));//drive further because of exchange
-			commands.add(new WaitCommand(0.3));
 			commands.add(new TurnCommand(180,turnSpeed,true,10));
-			commands.add(new WaitCommand(0.3));
 			commands.add(new DriveCommand(driveToSwitch + 10,driveToSwitch+10,0.40,true,2.5));
-			commands.add(new ClawCommand(false));
 		  } else {//R
 			DriverStation.reportWarning("right",false);
 			commands.add(new TurnCommand(thirtyturn-120,turnSpeed,true,10));
@@ -44,9 +46,9 @@ public class SwitchFromCenter extends Autonomous{
 			commands.add(new TurnCommand(550,-turnSpeed,true,10));
 			commands.add(new WaitCommand(0.3));
 			commands.add(new DriveCommand(driveToSwitch - 21,driveToSwitch-21,0.45,true,3));
-			commands.add(new ClawCommand(false));
 		  }
-		commands.add(new WaitCommand(0.3));
+		commands.add(new ClawCommand(false));
+		//commands.add(new GyroDriveCommand(-0.6,10,2));
 		commands.add(new DriveCommand(10,10,-0.35,false,2));
 	}
 }

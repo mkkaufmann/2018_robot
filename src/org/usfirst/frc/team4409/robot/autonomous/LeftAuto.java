@@ -138,7 +138,7 @@ public class LeftAuto extends Autonomous{
 				//GYRO(double _power, boolean _holdLift, double _distance, double _period)
 				commands.add(new GyroDriveCommand(0.6,false,208,10));
 				//commands.add(new TurnCommand(300,0.5,false,5));
-				commands.add(new RealGyroTurnCommand(0.65,true,22,3));
+				commands.add(new GyroTurnCommand(0.65,true,22,3));
 				commands.add(new LiftCommand(135,0.8,3));
 				commands.add(new LiftCommand(11,0.6,0.75));
 				commands.add(new DriveCommand(26,0.40,true,6));
@@ -146,7 +146,7 @@ public class LeftAuto extends Autonomous{
 				commands.add(new WaitCommand(1));
 				commands.add(new DriveCommand(30,-0.40,true,6));
 				commands.add(new LiftCommand(130,-0.8,3));
-				commands.add(new RealGyroTurnCommand(0.65,true,30,3));
+				commands.add(new GyroTurnCommand(0.65,true,30,3));
 				commands.add(new DriveCommand(36,0.40,true,6));
 
 	}
@@ -160,10 +160,10 @@ public class LeftAuto extends Autonomous{
 				SmartDashboard.putNumber("greedy scale forward 2", 30)*/
 				commands.add(new GyroDriveCommand(0.3,false,196,10));
 				//commands.add(new TurnCommand(300,0.5,false,5));
-				commands.add(new RealGyroTurnCommand(0.5,true,80,3));
+				commands.add(new GyroTurnCommand(0.5,true,80,3));
 				commands.add(new GyroDriveCommand(0.6,false,148,10));
 
-				commands.add(new RealGyroTurnCommand(-0.65,true,78,3));
+				commands.add(new GyroTurnCommand(-0.65,true,78,3));
 				commands.add(new LiftCommand(135,0.8,3));
 				commands.add(new LiftCommand(11,0.75,0.75));
 				commands.add(new GyroDriveCommand(0.6,false,20,10));

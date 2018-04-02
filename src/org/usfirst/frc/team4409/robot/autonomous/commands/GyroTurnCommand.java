@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 
-public class RealGyroTurnCommand extends AutonomousCommand{
+public class GyroTurnCommand extends AutonomousCommand{
 	private static Spark frontLeft = RobotMap.frontLeft;
 	private static Spark frontRight = RobotMap.frontRight;
 	private static Spark backLeft = RobotMap.backLeft;
@@ -27,7 +27,7 @@ public class RealGyroTurnCommand extends AutonomousCommand{
 	private boolean running = false;
 	private double period;
 	//0.25,true,10,3
-	public RealGyroTurnCommand(double _power, boolean _holdLift,double degrees,double _period){
+	public GyroTurnCommand(double _power, boolean _holdLift,double degrees,double _period){
 		this.degrees = degrees;//degrees turned
 		drivePower = _power;
 		holdLift = _holdLift;

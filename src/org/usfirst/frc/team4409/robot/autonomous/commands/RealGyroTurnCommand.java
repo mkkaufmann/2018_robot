@@ -22,27 +22,26 @@ public class RealGyroTurnCommand extends AutonomousCommand{
 	private double drivePower;
 	private boolean holdLift;
 	private double degrees;
-	private double distance;
 	
 	private Timer timer;
 	private boolean running = false;
 	private double period;
-
-	public RealGyroTurnCommand(double _power, boolean _holdLift,double _period,double _distance){
-		degrees = 0;//degrees turned
+	//0.25,true,10,3
+	public RealGyroTurnCommand(double _power, boolean _holdLift,double degrees,double _period){
+		this.degrees = degrees;//degrees turned
 		drivePower = _power;
 		holdLift = _holdLift;
 		period = _period;
 		timer = new Timer();
-		RobotMap.gyro.reset();
 	}
 	@Override
 	public boolean Run(){
 		double left = 0;
 		double right = 0;
 		
-		degrees = RobotMap.gyro.getAngle();
+		
 		if(!running){
+			RobotMap.gyro.reset();
 			timer.start();
 			running = true;
 		}
@@ -55,7 +54,7 @@ public class RealGyroTurnCommand extends AutonomousCommand{
 			elevatorLeft.set(-0.08);
 			elevatorRight.set(0.08);
 		}
-		if(Math.abs(degrees) < distance){
+		if(Math.abs(RobotMap.gyro.getAngle()) < degrees){
 			left = drivePower;
 			right = drivePower;
 		}

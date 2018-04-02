@@ -69,8 +69,8 @@ public class Robot extends IterativeRobot {
 		m_chooser.addObject("Right", 3);
 		m_chooser.addObject("Left", 4);
 		
-		scalePref.addDefault("Switch", 4);
-		//scalePref.addObject("Scale", 1);
+		scalePref.addDefault("Scale Priority w/ Switch", 4);
+		scalePref.addObject("Greedy Scale", 5);
 		//scalePref.addObject("Switch Only", 2);
 		//scalePref.addObject("Scale Only", 3);
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -79,7 +79,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Smartdashboard/example_variable", true);
 		SmartDashboard.putNumber("Smartdashboard/Lift_Encoder", 0.0);
 		SmartDashboard.putNumber("Auto Wait", 0);
-		
+		SmartDashboard.putNumber("greedy scale forward", 196);
+		SmartDashboard.putNumber("greedy scale cross", 160);
+		SmartDashboard.putNumber("greedy scale turn 1", 90);
+		SmartDashboard.putNumber("greedy scale turn 2", 90);
+		SmartDashboard.putNumber("greedy scale forward 2", 30);
 		RobotMap.liftEnc.reset();//Set encoder to 0
 		
 		CameraServer.getInstance().startAutomaticCapture();//hope camera works
